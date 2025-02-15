@@ -7,8 +7,7 @@ t_vertex	**create_vertices(int num_vertices)
 	t_vertex	**vertices;
 	int			i;
 
-	vertices = (t_vertex **)malloc(num_vertices * sizeof(t_vertex*));
-	if (!vertices)
+	vertices = (t_vertex **)malloc(num_vertices * sizeof(t_vertex*)); if (!vertices)
 		return (NULL);
 	i = 0;
 	while(i < num_vertices)
@@ -40,6 +39,10 @@ int count_word(const char *str)
 	return (count);
 }
 
+set_values()
+{
+}
+
 void	load_map(char *buffer)
 {
 	t_vertex	**vertices;
@@ -49,4 +52,18 @@ void	load_map(char *buffer)
 	vertices = create_vertices(num_vertices);
 	if (!vertices)
 		return ;
+	y = 0;
+	while (buffer[i] = '\0')
+	{
+		x = 0;
+		while (str[i] = '\n')
+		{
+			set_values(ft_atoi(str[i]), x, y);
+			while(ft_isdigit)
+				i++;
+			x++;
+		}
+		y++;
+		i++;
+	}
 }
