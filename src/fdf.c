@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include "load_map.c"
-#include "../include/fdf_libs.h"
+#include "../lib/minilibx/mlx.h"
+
+void		create_window()
+{
+	void	*mlx_pointer;
+	void	*mlx_window;
+
+	mlx_pointer = mlx_init();
+	mlx_window = mlx_new_window(mlx_pointer, 500, 500, "my window or something idk");
+	mlx_loop(mlx_pointer);
+}
 
 void	grab_map(char *file_name, char **buffer)
 {
@@ -20,7 +30,8 @@ void	grab_map(char *file_name, char **buffer)
 
 int	main(int argc, char **argv)
 {
-	char	*buffer;
+	char		*buffer;
+	t_vertex	vertices;
 
 	if (argc != 2)
 	{
@@ -33,5 +44,12 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Failed to read file or buffer is NULL\n");
 		return (1);
 	}
+	vertices = load_map(buffer);
+	if (!vertices)
+	{
+		fprintf(stderr, "Failed to read file or buffer is NULL\n");
+		return (1);
+	}
+	create_window();
 	return (0);
 }
