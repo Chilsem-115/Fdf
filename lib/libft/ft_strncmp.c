@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itamsama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 09:39:27 by itamsama          #+#    #+#             */
-/*   Updated: 2024/11/15 08:44:50 by itamsama         ###   ########.fr       */
+/*   Created: 2024/10/25 15:22:49 by itamsama          #+#    #+#             */
+/*   Updated: 2024/10/26 22:10:41 by itamsama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	int	nb;
-	int	sign;
-
-	nb = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-')
+	while (n > 0)
 	{
-		sign = -1;
-		str++;
+		if (*str1 != *str2)
+			return ((unsigned char) *str1 - (unsigned char) *str2);
+		if (*str1 == '\0')
+			break ;
+		str1++;
+		str2++;
+		n--;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		nb = (nb * 10) + (*str - '0');
-		str++;
-	}
-	return (nb * sign);
+	return (0);
 }

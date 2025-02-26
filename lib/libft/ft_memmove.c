@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itamsama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 09:39:27 by itamsama          #+#    #+#             */
-/*   Updated: 2024/11/15 08:44:50 by itamsama         ###   ########.fr       */
+/*   Created: 2024/10/22 22:23:57 by itamsama          #+#    #+#             */
+/*   Updated: 2024/10/26 21:31:15 by itamsama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+void	*ft_memmove(void *dest, const void *src, size_t count)
 {
-	int	nb;
-	int	sign;
+	const unsigned char	*s;
+	unsigned char		*d;
 
-	nb = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-')
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d == s || count == 0)
+		return (dest);
+	if (d < s)
 	{
-		sign = -1;
-		str++;
+		while (count--)
+			*d++ = *s++;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
+	else
 	{
-		nb = (nb * 10) + (*str - '0');
-		str++;
+		d += count;
+		s += count;
+		while (count--)
+		{
+			*(--d) = *(--s);
+		}
 	}
-	return (nb * sign);
+	return (dest);
 }

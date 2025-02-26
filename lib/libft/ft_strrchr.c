@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itamsama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 09:39:27 by itamsama          #+#    #+#             */
-/*   Updated: 2024/11/15 08:44:50 by itamsama         ###   ########.fr       */
+/*   Created: 2024/10/25 15:27:30 by itamsama          #+#    #+#             */
+/*   Updated: 2024/10/26 16:27:26 by itamsama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+char	*ft_strrchr(const char *str, int c)
 {
-	int	nb;
-	int	sign;
+	const char	*string_beg = str;
 
-	nb = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
+	while (*str)
 		str++;
-	if (*str == '-')
+	if (c == '\0')
+		return ((char *)str);
+	while (str != string_beg)
 	{
-		sign = -1;
-		str++;
+		if (*--str == (char)c)
+			return ((char *)str);
 	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		nb = (nb * 10) + (*str - '0');
-		str++;
-	}
-	return (nb * sign);
+	return (NULL);
 }

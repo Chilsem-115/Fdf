@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itamsama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 09:39:27 by itamsama          #+#    #+#             */
-/*   Updated: 2024/11/15 08:44:50 by itamsama         ###   ########.fr       */
+/*   Created: 2024/10/22 21:17:28 by itamsama          #+#    #+#             */
+/*   Updated: 2024/11/12 09:58:44 by itamsama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	nb;
-	int	sign;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	nb = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-')
-	{
-		sign = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		nb = (nb * 10) + (*str - '0');
-		str++;
-	}
-	return (nb * sign);
+	if ((dst == src) || n == 0)
+		return (dst);
+	s = (const unsigned char *)src;
+	d = (unsigned char *)dst;
+	while (n--)
+		*d++ = *s++;
+	return (dst);
 }
