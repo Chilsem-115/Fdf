@@ -6,11 +6,18 @@
 
 void		create_window(int height, int width)
 {
-	void	*mlx_ptr;
+	void	*mlx_connection;
+	void	*mlx_window;
 
-	mlx_ptr = mlx_init();
-	mlx_window = mlx_new_window(mlx_ptr, height, width, "fdf");
-	mlx_loop(mlx_ptr);
+	mlx_connection = mlx_init();
+	mlx_window = mlx_new_window(mlx_connection, height, width, "fdf");
+
+	// infinite loop
+	mlx_loop(mlx_connection);
+
+	mlx_destroy_window(mlx_connection, mlx_window);
+	mlx_destroy_display(mlx_connection);
+	free(mlx_connection);
 }
 
 void	grab_map(char *file_name, char **buffer)
