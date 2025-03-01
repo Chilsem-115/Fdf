@@ -1,5 +1,5 @@
-#include "../include/fdf_structs.h"
-#include "../include/fdf_libs.h"
+#include "../inc/fdf_structs.h"
+#include "../inc/fdf_libs.h"
 
 t_vertex	**create_vertices(int num_vertices)
 {

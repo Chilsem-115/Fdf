@@ -1,4 +1,4 @@
-#include "../include/fdf_libs.h"
+#include "../inc/fdf_libs.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

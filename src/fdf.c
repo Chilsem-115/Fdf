@@ -3,9 +3,9 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include "../lib/minilibx/mlx.h"
-#include "../include/load_map.h"
-#include "../include/fdf_structs.h"
-#include "../include/fdf_libs.h"
+#include "../inc/load_map.h"
+#include "../inc/fdf_structs.h"
+#include "../inc/fdf_libs.h"
 
 typedef struct s_data
 {
