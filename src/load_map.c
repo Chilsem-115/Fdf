@@ -9,7 +9,7 @@ t_vertex	**load_map(char *file_name, char **buffer)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_perror("couldn't open the file");
+		perror("couldn't open the file");
 		*buffer = NULL;
 		return (NULL);
 	}
