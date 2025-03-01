@@ -67,7 +67,7 @@ int		next_param(int i, int *y,char *buffer)
 	return (i);
 }
 
-t_vertex	**fetch_string(char *buffer)
+t_vertex	**grab_map(char *buffer)
 {
 	t_vertex	**vertices;
 	int			i;

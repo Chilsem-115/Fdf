@@ -4,12 +4,12 @@
 #include "../include/fdf_structs.h"
 #include "../include/fdf_libs.h"
 
-void		create_window()
+void		create_window(int height, int width)
 {
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
-	mlx_window = mlx_new_window(mlx_ptr, 1800, 1800, "my window or something idk");
+	mlx_window = mlx_new_window(mlx_ptr, height, width, "fdf");
 	mlx_loop(mlx_ptr);
 }
 
@@ -38,18 +38,12 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Usage : %s <file>\n", argv[0]);
 		return (0);
 	}
-	grab_map(argv[1], &buffer);
-	if (!buffer)
-	{
-		fprintf(stderr, "Failed to read file or buffer is NULL\n");
-		return (1);
-	}
-	vertices = load_map(buffer);
+	vertices = load_map(argv[1], &buffer);
 	if (!vertices)
 	{
 		fprintf(stderr, "Failed to read file or buffer is NULL\n");
 		return (1);
 	}
-	create_window();
+	create_window(1800, 1800); // you first put height and then width
 	return (0);
 }

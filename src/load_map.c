@@ -1,3 +1,5 @@
+#include ""
+
 t_vertex	**load_map(char *file_name, char **buffer)
 {
 	int			fd;
@@ -8,9 +10,10 @@ t_vertex	**load_map(char *file_name, char **buffer)
 	{
 		ft_perror("couldn't open the file");
 		*buffer = NULL;
-		return ;
+		return (NULL);
 	}
 	read_file(fd, buffer);
 	close(fd);
-	vertices = fetch_string(buffer);
+	vertices = grab_map(*buffer);
+	return (vertices);
 }
