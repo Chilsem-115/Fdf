@@ -6,6 +6,6 @@ int main()
 	void	*mlx_window;
 
 	mlx_pointer = mlx_init();
-	mlx_window = mlx_new_window(mlx_pointer, 500, 500, "my window or something idk");
+	mlx_window = mlx_new_window(mlx_pointer, 1500, 1500, "my window or something idk");
 	mlx_loop(mlx_pointer);
 }

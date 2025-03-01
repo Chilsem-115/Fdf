@@ -9,5 +9,6 @@
 #define BUFFER_SIZE 128
 void	read_file(int fd, char **buffer);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+int		ft_atoi(char *str);
 
 #endif
