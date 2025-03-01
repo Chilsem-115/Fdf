@@ -6,33 +6,26 @@
 
 void		create_window(int height, int width)
 {
-	void	*mlx_connection;
-	void	*mlx_window;
+	void	*mlx;
+	void	*win;
+	int x, y;
 
-	mlx_connection = mlx_init();
-	mlx_window = mlx_new_window(mlx_connection, height, width, "fdf");
+	mlx = mlx_init();
+	win = mlx_new_window(mlx , height, width, "fdf");
 
+
+	for (int i = 0; i < 100; i++)
+    {
+        x = rand() % 800; // Random x between 0 and 799
+        y = rand() % 600; // Random y between 0 and 599
+        mlx_pixel_put(mlx, win, x, y, 0xFFFFFF); // White color
+    }
 	// infinite loop
-	mlx_loop(mlx_connection);
+	mlx_loop(mlx );
 
-	mlx_destroy_window(mlx_connection, mlx_window);
-	mlx_destroy_display(mlx_connection);
-	free(mlx_connection);
-}
-
-void	grab_map(char *file_name, char **buffer)
-{
-	int		fd;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("couldn't open the file");
-		*buffer = NULL;
-		return ;
-	}
-	read_file(fd, buffer);
-	close(fd);
+	mlx_destroy_window(mlx, win);
+	mlx_destroy_display(mlx);
+	free(mlx);
 }
 
 int	main(int argc, char **argv)
@@ -51,6 +44,6 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Failed to read file or buffer is NULL\n");
 		return (1);
 	}
-	create_window(1800, 1800); // you first put height and then width
+	create_window(1200, 1800); // you first put height and then width
 	return (0);
 }

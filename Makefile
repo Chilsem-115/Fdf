@@ -1,30 +1,47 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+# Directories
+SRCDIR := src
+INCDIR := include
+OBJDIR := obj
 
-SRC_DIR = src
-OBJ_DIR = obj
-INCLUDE_DIR = include
+# Source files
+SRC := $(wildcard $(SRCDIR)/*.c)
 
-SRC = $(wildcard $(SRC_DIR)/*.c)
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Object files
+OBJ := $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 
-NAME = run
+# Compiler and flags
+CC := gcc
+CFLAGS := -Wall -Wextra -Werror -I$(INCDIR)
 
-all: $(NAME)
+# Final executable
+TARGET := fdf
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+# Library directories
+LIBMLX := lib/minilibx
+LIBFT := lib/libft
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+# Default target
+.PHONY: all
+all: $(TARGET)
+
+# Link object files to create the executable
+$(TARGET): $(OBJ)
+	$(CC) $^ -L$(LIBMLX) -lmlx -L$(LIBFT) -lft -lXext -lX11 -o $@
+
+# Ensure the obj directory exists and compile source files into object files
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# Create the obj directory if it doesn't exist
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
+# Run the program
+.PHONY: run
+run: all
+	./$(TARGET) something.txt
+
+# Clean up
+.PHONY: clean
 clean:
-	rm -rf $(OBJ_DIR)
-
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
+	rm -rf $(OBJDIR) $(TARGET)

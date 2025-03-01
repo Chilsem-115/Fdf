@@ -1,5 +1,6 @@
 #include "../include/fdf_structs.h"
 #include "../include/fdf_libs.h"
+#include "../include/load_map.h"
 
 t_vertex	**load_map(char *file_name, char **buffer)
 {
