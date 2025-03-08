@@ -46,9 +46,9 @@ int count_word(const char *str)
 
 void	set_values(int x, int y, int z, t_vertex **vertices,int v_index)
 {
-	vertices[v_index]->x = x;
-	vertices[v_index]->y = y;
-	vertices[v_index]->z = z;
+	vertices[v_index]->location.x = (float)x;
+	vertices[v_index]->locaiton.y = (float)y;
+	vertices[v_index]->location.z = (float)z;
 }
 
 int		next_param(int i, int *y,char *buffer)

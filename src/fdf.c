@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <math.h>
 #include "../lib/minilibx/mlx.h"
 #include "../inc/load_map.h"
 #include "../inc/fdf_structs.h"
@@ -11,6 +12,7 @@ typedef struct s_data
 {
     void *mlx_ptr;
     void *win_ptr;
+	t_img image;
 }	t_data;
 
 int	handle_keypress(int keycode, t_data *data)
@@ -25,7 +27,7 @@ int	handle_keypress(int keycode, t_data *data)
 	return (0);
 }
 
-void		create_window(int height, int width)
+void	create_window(int height, int width, t_vertex vertices)
 {
 	t_data data;
 
@@ -58,6 +60,6 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Failed to read file or buffer is NULL\n");
 		return (1);
 	}
-	create_window(1800, 1200); // you first put height and then width
+	create_window(600, 800, vertices); // you first put height and then width
 	return (0);
 }
