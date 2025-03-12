@@ -1,6 +1,3 @@
-#include <math.h>
-#include "../inc/fdf_structs.h"
-
 t_3d_location	apply_camera_location(t_3d_location pos, t_camera *camera)
 {
 	pos.x = pos.x - camera->location.x;
@@ -49,26 +46,4 @@ t_point	project_to_2d(t_3d_location pos);
 	result.y = (int)iso_y;
 
 	return (result);
-}
-
-t_point	*calc_position(t_vertex *vertices, int vertex_count, t_camera *camera)
-{
-	t_point	*points;
-	t_3d_location local_pos;
-	int		i;
-
-	points = 0;
-	i = 0;
-	points = malloc(sizeof(t_point) * vertex_count);
-	if (!points)
-		return (0);
-	while(i < vertex_count)
-	{
-		local_pos = vertices[i].location;
-		local_pos = apply_camera_location(local_pos, camera);
-		local_pos = apply_camera_rotation(local_pos, camera);
-		points[i] = project_to_2d(local_pos);
-		i++;
-	}
-	return (points);
 }

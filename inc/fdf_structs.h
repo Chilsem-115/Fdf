@@ -20,6 +20,12 @@ typedef struct s_vertex
 	t_3d_location	location;
 }	t_vertex;
 
+typedef struct s_line
+{
+	int	v1; //this is for the first vertex
+	int	v2;	//this is for the second vertex
+}	t_line;
+
 typedef struct s_camera
 {
 	t_3d_location	location;
@@ -28,11 +34,18 @@ typedef struct s_camera
 
 typedef struct s_object
 {
-	t_3d_location	location;
+	t_3d_location	location; // location and rotation storing
 	t_3d_rotation	rotation;
-	t_vertex		*vertices;
+	t_vertex		*vertices; // Array of vertices
 	int				vertex_count;
 }	t_object;
+
+typedef struct s_landscape
+{
+	t_object	object;
+	t_line		*lines;
+	int			line_count;
+}	t_landscape;
 
 typedef struct s_image
 {
