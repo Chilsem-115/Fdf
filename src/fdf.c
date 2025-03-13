@@ -27,7 +27,7 @@ int	handle_keypress(int keycode, t_data *data)
 	return (0);
 }
 
-void	create_window(int height, int width, t_landscape landscape)
+void	create_window(int height, int width, t_landscape *landscape)
 {
 	t_data data;
 
@@ -54,8 +54,8 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Usage : %s <file>\n", argv[0]);
 		return (0);
 	}
-	landscape.object.t_vertex = load_map(argv[1], &buffer);
-	if (!landscape.object.t_vertex)
+	landscape.object.vertices = load_map(argv[1], &buffer, &landscape);
+	if (!landscape.object.vertices)
 	{
 		fprintf(stderr, "Failed to read file or buffer is NULL\n");
 		return (1);

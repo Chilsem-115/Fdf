@@ -67,7 +67,7 @@ int		next_param(int i, int *y,char *buffer)
 	return (i);
 }
 
-t_vertex	**grab_map(char *buffer)
+t_vertex	**grab_map(char *buffer, int word_count)
 {
 	t_vertex	**vertices;
 	int			i;
@@ -78,7 +78,7 @@ t_vertex	**grab_map(char *buffer)
 	i = 0;
 	y = 0;
 	v_index = 0;
-	vertices = create_vertices(count_word(buffer));
+	vertices = create_vertices(word_count);
 	if (!vertices)
 		return (NULL);
 	while (buffer[i]) // starts the loop until the end of my buffer
