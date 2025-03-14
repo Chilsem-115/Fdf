@@ -8,13 +8,6 @@
 #include "../inc/fdf_structs.h"
 #include "../inc/fdf_libs.h"
 
-typedef struct s_data
-{
-    void *mlx_ptr;
-    void *win_ptr;
-	t_img image;
-}	t_data;
-
 int	handle_keypress(int keycode, t_data *data)
 {
 	if(keycode == XK_Escape)

@@ -1,3 +1,6 @@
+#include <math.h>
+#include "../inc/fdf_structs.h"
+
 t_3d_location	apply_camera_location(t_3d_location pos, t_camera *camera)
 {
 	pos.x = pos.x - camera->location.x;

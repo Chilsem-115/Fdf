@@ -25,25 +25,6 @@ t_vertex	**create_vertices(int num_vertices)
 	return (vertices);
 }
 
-int count_word(const char *str)
-{
-	int count;
-
-	count = 0;
-	while (*str)
-	{
-		while (*str == ' ' || *str == '\n' || *str == '\t')
-			str++;
-		if (*str)
-		{
-			count++;
-			while (*str && *str != ' ' && *str != '\n' && *str != '\t')
-				str++;
-		}
-	}
-	return (count);
-}
-
 void	set_values(int x, int y, int z, t_vertex **vertices,int v_index)
 {
 	vertices[v_index]->location.x = (float)x;
